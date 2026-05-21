@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排球場預約與揪團系統</title>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="auth-section" class="auth-box">
+        <h2>🏐 校園排球場預約系統</h2>
+        <input type="text" id="student_id" placeholder="請輸入學號" required>
+        <input type="password" id="password" placeholder="請設定或輸入密碼" required>
+        <br><br>
+        <button onclick="register()" class="btn-register">註冊新帳號</button>
+        <button onclick="login()" class="btn-login">登入</button>
+    </div>
+
+    <div id="app-section" class="container hidden">
+        <div class="header">
+            <h2 id="welcome-msg">歡迎！</h2>
+            <button onclick="logout()" class="btn-logout">登出</button>
+        </div>
+
+        <div class="booking-bar">
+            <strong>⚡ 快速預約：</strong>
+            <input type="date" id="book-date">
+            <select id="book-hour">
+                <option value="">選擇時間</option>
+                <option value="9">09:00</option>
+                <option value="10">10:00</option>
+                <option value="11">11:00</option>
+                <option value="12">12:00</option>
+                <option value="13">13:00</option>
+                <option value="14">14:00</option>
+                <option value="15">15:00</option>
+                <option value="16">16:00</option>
+                <option value="17">17:00</option>
+                <option value="18">18:00</option>
+                <option value="19">19:00</option>
+                <option value="20">20:00</option>
+            </select>
+            <select id="book-court">
+                <option value="A場">A場</option>
+                <option value="B場">B場</option>
+            </select>
+            <button onclick="manualBook()" class="btn-book">送出預約</button>
+        </div>
+
+        <p>💡 <strong>操作說明：</strong> 點擊空白處預約；點擊方塊加入/退出揪團。若格子被擋住，請使用上方的「快速預約」。</p>
+        <div id='calendar'></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
