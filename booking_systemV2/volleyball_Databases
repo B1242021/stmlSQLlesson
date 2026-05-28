@@ -1,0 +1,21 @@
+-- 1. 建立使用者資料表
+CREATE TABLE users (
+    student_id VARCHAR(20) PRIMARY KEY,
+    password VARCHAR(128) NOT NULL
+);
+
+-- 2. 建立預約(揪團)資料表 (使用 SERIAL 讓 id 自動遞增)
+CREATE TABLE reservations (
+    id SERIAL PRIMARY KEY,
+    court_name VARCHAR(10) NOT NULL,
+    date VARCHAR(10) NOT NULL,
+    hour INTEGER NOT NULL,
+    host_id VARCHAR(20) REFERENCES users(student_id)
+);
+
+-- 3. 建立參與者關聯表 (多對多)
+CREATE TABLE participants (
+    user_id VARCHAR(20) REFERENCES users(student_id),
+    reservation_id INTEGER REFERENCES reservations(id) ON DELETE CASCADE,
+    PRIMARY KEY (user_id, reservation_id)
+);
